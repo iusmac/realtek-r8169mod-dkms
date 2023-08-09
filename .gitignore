@@ -1,0 +1,10 @@
+debian/*
+!debian/initramfs-hooks/
+!debian/changelog
+!debian/control
+!debian/gbp.conf
+!debian/realtek-r8169mod-dkms.dkms
+!debian/realtek-r8169mod-dkms.docs
+!debian/realtek-r8169mod-dkms.install
+!debian/realtek-r8169mod-dkms.modprobe
+!debian/rules

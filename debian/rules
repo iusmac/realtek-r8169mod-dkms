@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+
+%:
+	dh $@
+
+override_dh_install:
+	dh_install src/*.h src/*.c src/Makefile usr/src/realtek-r8169mod-dkms-$(DEB_VERSION_UPSTREAM)/
+	find debian/realtek-r8169mod-dkms/usr/src -type f -perm -5 -print0 2>/dev/null | xargs -0r chmod a-X
+
+override_dh_dkms:
+	dh_dkms -V $(DEB_VERSION_UPSTREAM)
+
+# do nothing
+override_dh_auto_configure override_dh_auto_build override_dh_auto_test override_dh_auto_install override_dh_auto_clean:

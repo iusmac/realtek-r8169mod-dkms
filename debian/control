@@ -1,0 +1,22 @@
+Source: r8169mod
+Section: net
+Priority: optional
+Maintainer: iusmac <iusico.maxim@libero.it>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-dkms,
+Standards-Version: 4.6.0
+
+Package: realtek-r8169mod-dkms
+Architecture: all
+Depends: ${misc:Depends}
+Description: dkms source for the r8169mod network driver
+ This driver is a mod of the in-kernel driver `r8169` for network controllers
+ with RTL8169/8168/8101 PCI-Express interface, incorporating (mainly) all patch
+ fixes from Linux kernel 6.5.
+ .
+ Installation of the r8169mod-dkms package will disable the in-kernel r8169
+ module. To re-enable r8169, the r8169mod-dkms package must be purged.
+ .
+ This package provides the dkms source code for the r8169mod-dkms kernel modules.
+ Kernel source or headers are required to compile these modules.
