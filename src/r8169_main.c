@@ -56,6 +56,18 @@
 #define FIRMWARE_8125A_3	"rtl_nic/rtl8125a-3.fw"
 #define FIRMWARE_8125B_2	"rtl_nic/rtl8125b-2.fw"
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0)
+void netdev_sw_irq_coalesce_default_on(struct net_device *dev)
+{
+	WARN_ON(dev->reg_state == NETREG_REGISTERED);
+
+	if (!IS_ENABLED(CONFIG_PREEMPT_RT)) {
+		dev->gro_flush_timeout = 20000;
+		dev->napi_defer_hard_irqs = 1;
+	}
+}
+#endif
+
 /* Maximum number of multicast addresses to filter (vs. Rx-all-multicast).
    The RTL chips use a 64 element hash table based on the Ethernet CRC. */
 #define	MC_FILTER_LIMIT	32
@@ -5304,7 +5316,11 @@ static int rtl_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
 
 	dev->ethtool_ops = &rtl8169_ethtool_ops;
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+	netif_napi_add(dev, &tp->napi, rtl8169_poll, NAPI_POLL_WEIGHT);
+#else
 	netif_napi_add(dev, &tp->napi, rtl8169_poll);
+#endif
 
 	dev->hw_features = NETIF_F_IP_CSUM | NETIF_F_RXCSUM |
 			   NETIF_F_HW_VLAN_CTAG_TX | NETIF_F_HW_VLAN_CTAG_RX;
