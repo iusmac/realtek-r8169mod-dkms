@@ -1,3 +1,9 @@
+r8169mod (1.1-0) unstable; urgency=low
+
+  * r8169: fix ASPM-related issues on a number of systems with NIC version from RTL8168h
+
+ -- iusmac <iusico.maxim@libero.it>  Mon, 04 Sep 2023 22:34:47 +0200
+
 r8169mod (1.0-0) unstable; urgency=low
 
   * Initial release.
