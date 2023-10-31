@@ -1,3 +1,11 @@
+r8169mod (1.2-0) unstable; urgency=low
+
+  * r8169: fix the KCSAN reported data race in rtl_rx while reading desc->opts1
+  * r8169: fix the KCSAN reported data-race in rtl_tx while reading TxDescArray[entry].opts1
+  * r8169: fix the KCSAN reported data-race in rtl_tx() while reading tp->cur_tx
+
+ -- iusmac <iusico.maxim@libero.it>  Tue, 31 Oct 2023 08:22:22 +0100
+
 r8169mod (1.1-0) unstable; urgency=low
 
   * r8169: fix ASPM-related issues on a number of systems with NIC version from RTL8168h
