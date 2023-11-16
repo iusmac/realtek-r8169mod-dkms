@@ -1,3 +1,10 @@
+r8169mod (1.3-0) unstable; urgency=low
+
+  * r8169: respect userspace disabling IFF_MULTICAST
+  * net: r8169: Disable multicast filter for RTL8168H and RTL8107E
+
+ -- iusmac <iusico.maxim@libero.it>  Thu, 16 Nov 2023 09:47:01 +0100
+
 r8169mod (1.2-0) unstable; urgency=low
 
   * r8169: fix the KCSAN reported data race in rtl_rx while reading desc->opts1
