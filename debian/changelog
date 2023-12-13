@@ -1,3 +1,15 @@
+r8169mod (1.4-0) unstable; urgency=low
+
+  * r8169: fix rtl8125b PAUSE frames blasting when suspended
+  * r8169: prevent potential deadlock in rtl8169_close
+  * r8169: fix deadlock on RTL8125 in jumbo mtu mode
+  * r8169: fix rare issue with broken rx after link-down on RTL8125
+  * Revert "net: r8169: Disable multicast filter for RTL8168H and RTL8107E"
+  * r8169: fix network lost after resume on DASH systems
+  * r8169: add handling DASH when DASH is disabled
+
+ -- iusmac <iusico.maxim@libero.it>  Wed, 13 Dec 2023 09:52:57 +0100
+
 r8169mod (1.3-0) unstable; urgency=low
 
   * r8169: respect userspace disabling IFF_MULTICAST
